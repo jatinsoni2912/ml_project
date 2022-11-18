@@ -47,9 +47,7 @@ if args.block_type == 'conv_block':
 elif args.block_type == 'empty_block':
     processing_block_type = EmptyBlock
     dim_reduction_block_type = EmptyBlock
-elif args.block_type == 'BN_no_out':
-    processing_block_type = ConvolutionalProcessingBlock_bn_no_out
-    dim_reduction_block_type = ConvolutionalDimensionalityReductionBlock_bn_no_out
+
 elif args.block_type == 'BN':
     processing_block_type = BatchNormConvBlock
     dim_reduction_block_type = BatchNormDimReductionConvBlock
