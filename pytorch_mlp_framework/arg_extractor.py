@@ -24,6 +24,7 @@ def get_args():
                         help='Seed to use for random number generator for experiment')
     parser.add_argument('--image_num_channels', nargs="?", type=int, default=3,
                         help='The channel dimensionality of our image-data')
+    parser.add_argument('--learning_rate', nargs="?", type=float, default=1e-3, help='Learning rate')
     parser.add_argument('--image_height', nargs="?", type=int, default=32, help='Height of image data')
     parser.add_argument('--image_width', nargs="?", type=int, default=32, help='Width of image data')
     parser.add_argument('--num_stages', nargs="?", type=int, default=3,
@@ -48,7 +49,6 @@ def get_args():
     parser.add_argument('--block_type', type=str, default='conv_block',
                         help='Type of convolutional blocks to use in our network '
                              '(This argument will be useful in running experiments to debug your network)')
-    parser.add_argument('--learning_rate', nargs="?", type=float, default=1e-3, help='Learning rate')
     args = parser.parse_args()
     print(args)
     return args
