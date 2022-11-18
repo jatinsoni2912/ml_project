@@ -47,6 +47,12 @@ if args.block_type == 'conv_block':
 elif args.block_type == 'empty_block':
     processing_block_type = EmptyBlock
     dim_reduction_block_type = EmptyBlock
+elif args.block_type == 'BN_no_out':
+    processing_block_type = ConvolutionalProcessingBlock_bn_no_out
+    dim_reduction_block_type = ConvolutionalDimensionalityReductionBlock_bn_no_out
+elif args.block_type == 'BN':
+    processing_block_type = BatchNormConvBlock
+    dim_reduction_block_type = BatchNormDimReductionConvBlock
 else:
     raise ModuleNotFoundError
 
@@ -64,5 +70,6 @@ conv_experiment = ExperimentBuilder(network_model=custom_conv_net,
                                     use_gpu=args.use_gpu,
                                     continue_from_epoch=args.continue_from_epoch,
                                     train_data=train_data_loader, val_data=val_data_loader,
+                                    learning_rate=args.learning_rate,
                                     test_data=test_data_loader)  # build an experiment object
 experiment_metrics, test_metrics = conv_experiment.run_experiment()  # run experiment and return experiment metrics
