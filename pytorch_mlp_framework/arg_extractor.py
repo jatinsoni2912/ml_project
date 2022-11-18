@@ -24,7 +24,6 @@ def get_args():
                         help='Seed to use for random number generator for experiment')
     parser.add_argument('--image_num_channels', nargs="?", type=int, default=3,
                         help='The channel dimensionality of our image-data')
-    parser.add_argument('--learning_rate', type=float, default=1e-3, help='Learning rate')
     parser.add_argument('--image_height', nargs="?", type=int, default=32, help='Height of image data')
     parser.add_argument('--image_width', nargs="?", type=int, default=32, help='Width of image data')
     parser.add_argument('--num_stages', nargs="?", type=int, default=3,
@@ -40,6 +39,7 @@ def get_args():
                              'dimensionality reduction layers)')
     parser.add_argument('--num_epochs', nargs="?", type=int, default=100, help='Total number of epochs for model training')
     parser.add_argument('--num_classes', nargs="?", type=int, default=100, help='Number of classes in the dataset')
+    parser.add_argument('--learning_rate', nargs="?", type=float, default=1e-3, help='Learning rate')
     parser.add_argument('--experiment_name', nargs="?", type=str, default="exp_1",
                         help='Experiment name - to be used for building the experiment folder')
     parser.add_argument('--use_gpu', nargs="?", type=str2bool, default=True,
