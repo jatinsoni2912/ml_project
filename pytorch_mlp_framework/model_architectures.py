@@ -562,9 +562,7 @@ class ResidualBatchNormDimReductionConvBlock_BNRC(nn.Module):
 
          # Building and applying batchNorm layer 1
         self.layer_dict['bn_1'] = nn.BatchNorm2d(num_features=out.shape[1])
-        out = self.layer_dict['bn_1'].forward(out)
-        z = self.layer_dict['bn_1'].forward(out)
-        out = F.leaky_relu(z)
+        out = F.leaky_relu(self.layer_dict['bn_1'].forward(out))
 
         print(out.shape)
 
@@ -579,8 +577,6 @@ class ResidualBatchNormDimReductionConvBlock_BNRC(nn.Module):
         out = F.avg_pool2d(out, self.reduction_factor)
 
         out = self.layer_dict['conv_1'].forward(out)
-        out = self.layer_dict['bn_1'].forward(out)
-        z = self.layer_dict['bn_1'].forward(out)
-        out = F.leaky_relu(z)
+        out = F.leaky_relu(self.layer_dict['bn_1'].forward(out))
 
         return out
